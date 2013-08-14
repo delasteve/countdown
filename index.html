@@ -3,51 +3,61 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Countdown by delasteve</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <link rel="stylesheet" href="stylesheets/custom.css">
+    <title>Final countdown!</title>
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
     <script src="javascripts/graduation.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
   </head>
   <body>
-      <div id="header" style="text-align:center;">
-        <h1 style="margin-top:15px;">Countdown Until Graduation</h1>
+    <div class="container" style="text-align:center;">
+      <section id="header">
+        <div>
+          <h1>Countdown Until Stephen's Last Day of Class</h1>
+        </div>  
+      </section>
+      
+      <hr />
+
+      <div>
+        <h2>Class ends</h2>
+        <div>
+          <span>December 17, 2013</span>
+          <span>1:20PM EST</span>  
+        </div>
       </div>
 
-    <div class="wrapper">
-      <section>
-        <div id="title">
-          <h1>Graduation Date</h1>
-          <h2 style="text-align:center;">December 17, 2013 1:20PM EST</h2>
-          <hr />
+      <hr />
+
+      <section id="countdowns">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2>Total</h2>
+            <span id="total"></span>
+          </div>
         </div>
-        <div id="graduation" style="text-align:center;">
-          <div class="countdown">
+
+        <hr />
+
+        <div class="row">
+          <div class="col-lg-3">
+            <h1>Weeks</h1>
+            <span id="weeks"></span>
+          </div>
+          <div class="col-lg-3">
             <h1>Days</h1>
             <span id="days"></span>
           </div>
-          <div class="countdown">
+          <div class="col-lg-3">
             <h1>Minutes</h1>
             <span id="minutes"></span>
           </div>
-          <div class="countdown">
+          <div class="col-lg-3">
             <h1>Seconds</h1>
             <span id="seconds"></span>
           </div>
         </div>
       </section>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
   </body>
 </html>

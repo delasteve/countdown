@@ -8,13 +8,17 @@ var millisecondConversions = {
 
 var graduationDate = new Date(2013, 11, 17, 13, 20, 0, 0); 
 
-function calculateDaysUntilGraduation(timeUntilGraduation) {
+function calculateTotalTimeUntilGraduation(timeUntilGraduation) {
   var total = {
+    weeks: 0,
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0
   }
+
+  total.weeks = Math.floor(timeUntilGraduation / millisecondConversions.week);
+  timeUntilGraduation %= millisecondConversions.week;
 
   total.days = Math.floor(timeUntilGraduation / millisecondConversions.day);
   timeUntilGraduation %= millisecondConversions.day;
@@ -30,48 +34,40 @@ function calculateDaysUntilGraduation(timeUntilGraduation) {
   return total;
 }
 
-function calculateMinutesUntilGraduation(timeUntilGraduation) {
-  var total = {
-    minutes: 0,
-    seconds: 0
-  };
-
-  total.minutes = Math.floor(timeUntilGraduation / millisecondConversions.minute);
-  timeUntilGraduation %= millisecondConversions.minute;
-
-  total.seconds = Math.floor(timeUntilGraduation / millisecondConversions.second);
-
-  return total;
+function calculateTimeUntilGraduation(timeUntilGraduation, timeDivisor) {
+  return Math.floor(timeUntilGraduation / timeDivisor);
 }
 
-function calculateSecondsUntilGraduation(timeUntilGraduation) {
-  return Math.floor(timeUntilGraduation / millisecondConversions.second);
-}
-
-function calculateTimeUntilGraduation() {        
+function init() {        
   var today = new Date();
   
   var timeUntilGraduation = (graduationDate - today);
  
   if (timeUntilGraduation > 0) {
-    var minutesUntilGraduation = calculateMinutesUntilGraduation(timeUntilGraduation);
-    var secondsUntilGraduation = calculateSecondsUntilGraduation(timeUntilGraduation);
+    var totalTimeUntilGraduation = calculateTotalTimeUntilGraduation(timeUntilGraduation);
+    var totalText = totalTimeUntilGraduation.weeks + ' weeks, ' + 
+                    totalTimeUntilGraduation.days + ' days, ' + 
+                    totalTimeUntilGraduation.hours + ' hours, ' + 
+                    totalTimeUntilGraduation.minutes + ' minutes, ' + 
+                    totalTimeUntilGraduation.seconds + ' seconds';
 
-    var minutesToAdjust = Math.abs(graduationDate.getTimezoneOffset()) - Math.abs(today.getTimezoneOffset());
-    today.setMinutes(today.getMinutes() + minutesToAdjust);
+    var weeksUntilGraduation = calculateTimeUntilGraduation(timeUntilGraduation, millisecondConversions.week);
+    var daysUntilGraduation = calculateTimeUntilGraduation(timeUntilGraduation, millisecondConversions.day);
+    var minutesUntilGraduation = calculateTimeUntilGraduation(timeUntilGraduation, millisecondConversions.minute);
+    var secondsUntilGraduation = calculateTimeUntilGraduation(timeUntilGraduation, millisecondConversions.second);
 
-    var daysUntilGraduation = calculateDaysUntilGraduation(timeUntilGraduation);
-    
-    $('#days').text(daysUntilGraduation.days + ' days, ' + daysUntilGraduation.hours + ' hours, ' + daysUntilGraduation.minutes + ' minutes, ' + daysUntilGraduation.seconds + ' seconds');
-    $('#minutes').text(minutesUntilGraduation.minutes + ' minutes, ' + minutesUntilGraduation.seconds + ' seconds');
+    $('#total').text(totalText);
+    $('#weeks').text(weeksUntilGraduation + ' weeks');
+    $('#days').text(daysUntilGraduation + ' days');
+    $('#minutes').text(minutesUntilGraduation + ' minutes');
     $('#seconds').text(secondsUntilGraduation + ' seconds');
   } else {
-    $('#graduation').html('<h1>CONGRATULATIONS! YOU FUCKING GRADUATED!</h1>');
+    $('#countdowns').html('<h1>CONGRATULATIONS! YOU FUCKING GRADUATED!</h1>');
   }
 };
 
 $(document).ready(function () {
-  calculateTimeUntilGraduation();
+  init();
 });
 
-setInterval(calculateTimeUntilGraduation, 1000);
+setInterval(init, 1000);
