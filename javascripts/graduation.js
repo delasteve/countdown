@@ -62,7 +62,7 @@ function init() {
     $('#minutes').text(minutesUntilGraduation + ' minutes');
     $('#seconds').text(secondsUntilGraduation + ' seconds');
   } else {
-    $('#countdowns').html('<h1>CONGRATULATIONS! YOU FUCKING GRADUATED!</h1>');
+    $('.container').html('<h1>CONGRATULATIONS! YOU GRADUATED!</h1>');
   }
 };
 
