@@ -57,10 +57,10 @@ function init() {
     var secondsUntilGraduation = calculateTimeUntilGraduation(timeUntilGraduation, millisecondConversions.second);
 
     $('#total').text(totalText);
-    $('#weeks').text(weeksUntilGraduation + ' weeks');
-    $('#days').text(daysUntilGraduation + ' days');
-    $('#minutes').text(minutesUntilGraduation + ' minutes');
-    $('#seconds').text(secondsUntilGraduation + ' seconds');
+    $('#weeks').text(weeksUntilGraduation);
+    $('#days').text(daysUntilGraduation);
+    $('#minutes').text(minutesUntilGraduation);
+    $('#seconds').text(secondsUntilGraduation);
   } else {
     $('.container').html('<h1>CONGRATULATIONS! YOU GRADUATED!</h1>');
   }
