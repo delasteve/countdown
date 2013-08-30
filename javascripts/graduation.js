@@ -6,7 +6,7 @@ var millisecondConversions = {
   second: 1000
 };
 
-var graduationDate = new Date(2013, 11, 17, 13, 20, 0, 0); 
+var graduationDate = new Date(2013, 11, 13, 16, 30, 0, 0); 
 
 function calculateTotalTimeUntilGraduation(timeUntilGraduation) {
   var total = {
